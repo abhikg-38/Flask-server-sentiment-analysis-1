@@ -4,6 +4,7 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
+from flask_cors import CORS
 
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
@@ -23,6 +24,7 @@ def preprocess(text):
     return ' '.join(words)
 
 app=Flask(__name__)
+CORS(app)
 @app.route('/analyze', methods=['POST'])
 def analyze():
     data=request.get_json()
